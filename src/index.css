@@ -1,0 +1,29 @@
+body {
+  font: 14px "Trebuchet MS", Futura, sans-serif;
+  margin: 20px;
+}
+
+.table {
+  width: 100%;
+  text-align: left;
+}
+
+.grid-parent-workspace-element {
+  display: grid;
+  grid-template-rows: 7fr 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-child-element {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  width: 100%;
+}
+
+.grid-control-panel-child-element {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  margin-bottom: 2%;
+}
