@@ -28,3 +28,9 @@ body {
   bottom: 0;
   margin-bottom: 2%;
 }
+
+.centered-label {
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+}

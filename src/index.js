@@ -106,7 +106,7 @@ class NewItem extends React.Component {
                 <div>
                     <input type='text' placeholder='Product ID' value={this.state.id} onChange={this.handleIdChange}/>
                     <input type='text' placeholder='Product Name' value={this.state.name} onChange={this.handleNameChange}/>
-                    <input type='text' placeholder='Quantity purchased' value={this.state.qty} onChange={this.handleQtyChange}/>
+                    <input type='text' placeholder='Quantity' value={this.state.qty} onChange={this.handleQtyChange}/>
                     <input type='submit' value='Done' onClick={this.handleSubmit}/>
                 </div>
             </div>
@@ -137,6 +137,7 @@ class List extends React.Component {
                     </tr>
                     {rows}
                 </table>
+                <div className='centered-label'><i>{rows.length === 0 ? 'No items have been added yet. Start billing by adding a new item.' : 'End of list.'}</i></div>
             </div>
         ) 
     }
@@ -173,8 +174,6 @@ class ControlPanel extends React.Component {
         return (
             <div>
                 <h1>Control Panel</h1>
-                <button>Add Item</button>
-                <button>Remove Item</button>
                 <button>Complete Transaction</button>
                 <button>Cancel Transaction</button>
             </div>
