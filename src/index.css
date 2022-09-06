@@ -15,10 +15,11 @@ body {
   height: 100%;
 }
 
-.grid-child-element {
+.grid-upper-workspace {
   display: grid;
   grid-template-columns: 3fr 1fr;
   width: 100%;
+  column-gap: 2%;
 }
 
 .grid-control-panel-child-element {
