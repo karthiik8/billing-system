@@ -1,6 +1,7 @@
-body {
+/*  Reset all styling that some browsers may impose by default */
+body, html {
   font: 14px "Trebuchet MS", Futura, sans-serif;
-  margin: 20px;
+  margin: 0;
 }
 
 .table {
@@ -8,21 +9,47 @@ body {
   text-align: left;
 }
 
-.grid-parent-workspace-element {
-  display: grid;
-  grid-template-rows: 7fr 1fr;
-  width: 100%;
-  height: 100%;
+.root-container {
+  /* 
+  If we wish to set any element's height to be a percentage of the parent element's height, 
+  it will be necessary to declare the root div's height to be the entire viewport's height.
+  This will allow us to use a percentage value for the banner's height. The alternative 
+  to this method is to use an absolute pixel value for the banner's height
+  
+  Refer https://stackoverflow.com/questions/7049875/why-doesnt-height-100-work-to-expand-divs-to-the-screen-height
+  */
+  min-height: 100vh;
+  height: 100vh;
 }
 
 .grid-upper-workspace {
+  margin: 20px;
   display: grid;
   grid-template-columns: 3fr 1fr;
   width: 100%;
   column-gap: 2%;
 }
 
-.grid-control-panel-child-element {
+.banner {
+  width: 100%;
+  height: 60px; /* Setting banner height */
+  
+  background-color: black;
+  color: white;
+  
+  padding-left: 20px;
+  margin: 0;
+
+  /* Center the contents of the banner along the horizontal axis */
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  margin: 0;
+}
+
+.footer {
   position: fixed;
   width: 100%;
   bottom: 0;
