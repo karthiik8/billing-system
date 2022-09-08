@@ -10,9 +10,9 @@ class App extends React.Component {
         return (
             <div className='root-container'>
                 <div className='banner'>
-                    <h1 className='header'>BILLING SYSTEM</h1>
+                    <h2 className='header'>BILLING SYSTEM</h2>
                 </div>
-                <div className='grid-upper-workspace'>
+                <div className='grid-workspace'>
                     <Invoice />
                     <Summary />
                 </div>

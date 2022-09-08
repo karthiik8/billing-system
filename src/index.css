@@ -1,15 +1,62 @@
 /*  Reset all styling that some browsers may impose by default */
-body, html {
-  font: 14px "Trebuchet MS", Futura, sans-serif;
+* {
   margin: 0;
+  padding: 0;
+
+  /*
+  Fixes bug where html element would not occupy the entire screen at smaller dimensions.
+  This was affecting the banner's width since it was no longer occupying the entire window.
+
+  Refer https://stackoverflow.com/questions/11801752/html-body-and-div-set-at-100-width-but-its-still-not-taking-the-full-100
+  */
+  overflow: auto;
 }
 
-.table {
+body {
+  font: 14px "Trebuchet MS", Futura, sans-serif;
+
+  /* Body should not be given 100% width or 100% height as it overlaps the scroll bars! */
+  /* width: 100%;
+  height: 100%; */
+}
+
+/* TODO: Refactor into its own file */
+.list-table {
+  border-collapse: separate;
+  border-spacing: 0 .75em;  /* em = 2in of font size */
   width: 100%;
   text-align: left;
 }
 
+/* Applying CSS to th of only those tables whose class name is list-table */
+.list-table th {
+  border-style: solid;
+  border-width: 0px 0px 2px 0px;
+  border-color: rgb(150, 150, 150);
+
+  padding-bottom: .5em;
+  font-size: large;
+}
+
+/* Applies the CSS to only those rows and its descendants when the row's class name is list-table-last-row*/
+tr.list-table-last-row > * {
+  border-style: solid;
+  border-width: 2px 0px 2px 0px;
+  border-color: rgb(150, 150, 150);
+
+  padding: .5em 0 .5em 0;
+  font-size: large;
+}
+
+/* Selecting list-table, then all rows, and then focusing the selection on only those td tags whose class name is amount-column*/
+.list-table tr td.amount-column {
+  text-align: right;
+}
+
 .root-container {
+  width: 100vw;
+  min-width: 100vw;
+
   /* 
   If we wish to set any element's height to be a percentage of the parent element's height, 
   it will be necessary to declare the root div's height to be the entire viewport's height.
@@ -18,21 +65,33 @@ body, html {
   
   Refer https://stackoverflow.com/questions/7049875/why-doesnt-height-100-work-to-expand-divs-to-the-screen-height
   */
-  min-height: 100vh;
+
   height: 100vh;
+  min-height: 100vh;
+
+  /* display: inline; */
 }
 
-.grid-upper-workspace {
-  margin: 20px;
+.grid-workspace {
+  padding: 20px;
+  
   display: grid;
   grid-template-columns: 3fr 1fr;
-  width: 100%;
   column-gap: 2%;
+
+  /*
+  Adding padding and setting width at 100% simultaneously seems to cause the workspace div to overflow.
+  This creates a visual bug with the banner where it does not extend across the entire scrollable width.
+  In other words, a dead space can be seen to the right of the banner when scrolling right
+  */
+
+  /* width: 100%; */
+  height: 100%;
 }
 
 .banner {
   width: 100%;
-  height: 60px; /* Setting banner height */
+  height: 40px; /* setting banner height */
   
   background-color: black;
   color: white;
@@ -56,8 +115,31 @@ body, html {
   margin-bottom: 2%;
 }
 
+.workspace-container {
+  border-style: solid;
+  border-width: 0px 0px 0px 0px;
+  
+  /* Padding to prevent elements from sticking to the right border */
+  padding: 10px;
+}
+
+.workspace-container * {
+  padding: 5px;
+}
+
 .centered-label {
   display: flex;
   justify-content: center;
   margin: 2%;
+}
+
+/* 
+NewItem CSS 
+TODO: Refactor into its own file
+*/
+
+.add-item-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
+  column-gap: 2%;
 }
