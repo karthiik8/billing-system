@@ -18,7 +18,7 @@ class List extends React.Component {
 
         if (rows.length > 0) 
             rows.push(
-                <tr className='list-table-last-row'>
+                <tr className='last-row'>
                     <td></td>
                     <td></td>
                     <td></td>

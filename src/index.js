@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
-import Invoice from './Invoice'
-import Summary from './Summary'
+import Invoice from './components/Invoice'
+import Summary from './components/Summary'
 
 class App extends React.Component {
     render() {

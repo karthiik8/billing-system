@@ -56,7 +56,7 @@ class NewItem extends React.Component {
                     <input type='text' placeholder='Product ID' value={this.state.id} onChange={this.handleIdChange}/>
                     <input type='text' placeholder='Product Name' value={this.state.name} onChange={this.handleNameChange}/>
                     <input type='text' placeholder='Quantity' value={this.state.qty} onChange={this.handleQtyChange}/>
-                    <input type='submit' value='Done' onClick={this.handleSubmit}/>
+                    <input type='submit' value='Add' className='add' onClick={this.handleSubmit}/>
                 </div>
             </div>
         )
