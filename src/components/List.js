@@ -29,7 +29,6 @@ class List extends React.Component {
 
         return (
             <div>
-                <h2>Item List</h2>
                 <table className='list-table'>
                     <tr>
                         <th>ID</th>

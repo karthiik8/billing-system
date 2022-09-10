@@ -4,7 +4,7 @@ class Summary extends React.Component {
     render() {
         return (
             <div className='workspace-container'>
-                <h1>Product Details</h1>
+                <h1>DETAILS</h1>
             </div>
         )
     }

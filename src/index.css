@@ -40,7 +40,7 @@ body {
 
 /* Select all rows from the table, exclude last row and select even rows only */
 .list-table > :not(tr.last-row):not(:first-child):nth-child(odd) {
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(230, 230, 230);
 }
 
 /* Applies the CSS to only those rows and its descendants when the row's class name is list-table-last-row*/
@@ -144,6 +144,14 @@ TODO: Refactor into its own file
 */
 
 .add-item-container {
+  border-style: solid;
+  border-color: rgb(150, 150, 150);
+  border-width: 2px;
+  border-radius: 10px;
+  margin-top: 1%;
+}
+
+.add-item-container .input {
   display: grid;
   grid-template-columns: 3fr 7fr 2fr 1fr;
   column-gap: 2%;

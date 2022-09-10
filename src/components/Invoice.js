@@ -28,7 +28,7 @@ class Invoice extends React.Component {
     render() {
         return (
             <div className='workspace-container'>
-                <h1>Invoice</h1>
+                <h1>INVOICE</h1>
                 <NewItem updateList={this.updateList} />
                 <List items={this.state.items} itemsPerPage='10' />
             </div>
