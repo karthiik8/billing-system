@@ -2,8 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
-import Invoice from './components/Invoice'
-import Summary from './components/Summary'
+import Workspace from './components/Workspace'
 
 class App extends React.Component {
     render() {
@@ -12,10 +11,7 @@ class App extends React.Component {
                 <div className='banner'>
                     <h2 className='header'>BILLING SYSTEM</h2>
                 </div>
-                <div className='grid-workspace'>
-                    <Invoice />
-                    <Summary />
-                </div>
+                <Workspace />
             </div>
         )
     }

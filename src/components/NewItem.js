@@ -19,6 +19,9 @@ class NewItem extends React.Component {
     // TODO: Must query database
 
     handleIdChange(e) {
+        // e is the event object
+        // e.target returns the element that triggered the event
+        // In this case, value is the attribute of the element that triggered the event
         this.setState({id: e.target.value})
     }
 
@@ -33,7 +36,7 @@ class NewItem extends React.Component {
     handleSubmit(e) {
         // Use the property function received from the Invoice component to update its items array. The Invoice
         // component will then pass the updated array as a property to List for rendering 
-        this.props.updateList({
+        this.props.addItem({
             id: this.state.id,
             name: this.state.name,
             price: 50,  // TODO: Must remove this placeholder price value
@@ -50,9 +53,9 @@ class NewItem extends React.Component {
  
     render() {
         return (
-            <div className='add-item-container'>
+            <div className='rounded-border'>
                 <h2>{this.state.name === '' ? 'Add Item' : this.state.name + ' | ' + this.state.id}</h2>
-                <div className='input'>
+                <div className='add-item-container'>
                     <input type='text' placeholder='Product ID' value={this.state.id} onChange={this.handleIdChange}/>
                     <input type='text' placeholder='Product Name' value={this.state.name} onChange={this.handleNameChange}/>
                     <input type='text' placeholder='Quantity' value={this.state.qty} onChange={this.handleQtyChange}/>

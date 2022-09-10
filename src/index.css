@@ -54,7 +54,11 @@ body {
 }
 
 /* Selecting list-table, then all rows, and then focusing the selection on only those td tags whose class name is amount-column*/
-.list-table tr td.amount-column {
+/* .list-table tr td.amount-column {
+  text-align: right;
+} */
+
+.list-table tr :last-child {
   text-align: right;
 }
 
@@ -77,7 +81,7 @@ body {
   /* display: inline; */
 }
 
-.grid-workspace {
+.workspace-container {
   padding: 20px;
   
   display: grid;
@@ -120,7 +124,7 @@ body {
   margin-bottom: 2%;
 }
 
-.workspace-container {
+.workspace-container-child {
   border-style: solid;
   border-width: 0px 0px 0px 0px;
   
@@ -128,7 +132,7 @@ body {
   padding: 10px;
 }
 
-.workspace-container * {
+.workspace-container-child * {
   padding: 5px;
 }
 
@@ -143,7 +147,7 @@ NewItem CSS
 TODO: Refactor into its own file
 */
 
-.add-item-container {
+.rounded-border {
   border-style: solid;
   border-color: rgb(150, 150, 150);
   border-width: 2px;
@@ -151,7 +155,7 @@ TODO: Refactor into its own file
   margin-top: 1%;
 }
 
-.add-item-container .input {
+.add-item-container {
   display: grid;
   grid-template-columns: 3fr 7fr 2fr 1fr;
   column-gap: 2%;
