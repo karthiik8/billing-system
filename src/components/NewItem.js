@@ -53,14 +53,13 @@ class NewItem extends React.Component {
  
     render() {
         return (
-            <div className='rounded-border'>
-                <h2>{this.state.name === '' ? 'Add Item' : this.state.name + ' | ' + this.state.id}</h2>
-                <div className='add-item-container'>
-                    <input type='text' placeholder='Product ID' value={this.state.id} onChange={this.handleIdChange}/>
-                    <input type='text' placeholder='Product Name' value={this.state.name} onChange={this.handleNameChange}/>
-                    <input type='text' placeholder='Quantity' value={this.state.qty} onChange={this.handleQtyChange}/>
-                    <input type='submit' value='Add' className='add' onClick={this.handleSubmit}/>
-                </div>
+            <div className='add-item-container'>
+                {/* <h2>{this.state.name === '' ? 'Add Item' : this.state.name + ' | ' + this.state.id}</h2> */}
+                <h2>Add Item</h2>
+                <input type='text' placeholder='Product ID' value={this.state.id} onChange={this.handleIdChange} required />
+                <input type='text' placeholder='Product Name' value={this.state.name} onChange={this.handleNameChange} required />
+                <input type='text' placeholder='Quantity' value={this.state.qty} onChange={this.handleQtyChange}/>
+                <input type='submit' value='Add' className='add' onClick={this.handleSubmit}/>
             </div>
         )
     }

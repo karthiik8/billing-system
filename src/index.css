@@ -39,7 +39,7 @@ body {
 }
 
 /* Select all rows from the table, exclude last row and select even rows only */
-.list-table > :not(tr.last-row):not(:first-child):nth-child(odd) {
+.list-table tbody > :not(tr.last-row):not(:first-child):nth-child(odd) {
   background-color: rgb(230, 230, 230);
 }
 
@@ -124,15 +124,7 @@ body {
   margin-bottom: 2%;
 }
 
-.workspace-container-child {
-  border-style: solid;
-  border-width: 0px 0px 0px 0px;
-  
-  /* Padding to prevent elements from sticking to the right border */
-  padding: 10px;
-}
-
-.workspace-container-child * {
+.workspace-container * {
   padding: 5px;
 }
 
@@ -152,11 +144,16 @@ TODO: Refactor into its own file
   border-color: rgb(150, 150, 150);
   border-width: 2px;
   border-radius: 10px;
-  margin-top: 1%;
 }
 
 .add-item-container {
   display: grid;
-  grid-template-columns: 3fr 7fr 2fr 1fr;
+  grid-template-columns: 2fr 3fr 7fr 2fr 1fr;
+  column-gap: 2%;
+}
+
+.details-container li {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   column-gap: 2%;
 }

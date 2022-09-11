@@ -12,9 +12,9 @@ class List extends React.Component {
         this.handleClick = this.handleClick.bind(this)
     }
 
-    handleClick(e, item) {
+    handleClick(e, item, i) {
         // console.log(this.props.setSelectedItem)
-        this.props.setSelectedItem(item)
+        this.props.setSelectedItem(item, i)
     }
 
     render () {
@@ -27,11 +27,11 @@ class List extends React.Component {
             total += subtotal
 
             rows.push(
-                <tr className="list-table-row" onClick={(e) => this.handleClick(e, item)}>
-                    <td>{item.id}</td>
-                    <td>{item.name}</td>
-                    <td>{item.price}</td>
-                    <td>{item.qty}</td>
+                // TODO: Change key for tr since more than one item can contain the same ID
+                <tr className="list-table-row" onClick={(e) => this.handleClick(e, item, i)} key={item.id}>
+                    {Object.keys(item).map( 
+                        prop => <td key={prop}>{item[prop]}</td>
+                    )}
                     <td>{subtotal}</td>
                 </tr>
             )
@@ -39,7 +39,7 @@ class List extends React.Component {
 
         if (!empty) 
             rows.push(
-                <tr className="last-row">
+                <tr className="last-row" key="last-row">
                     <td colSpan="4"><b>FINAL TOTAL</b></td>
                     <td>{total}</td>
                 </tr>
@@ -48,16 +48,25 @@ class List extends React.Component {
         return (
             <div>
                 <table className="list-table">
-                    <tr>
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>PRICE</th>
-                        <th>QUANTITY</th>
-                        <th>SUBTOTAL</th>
-                    </tr>
-                    {rows}
+                    <tbody>
+                        <tr>
+                            {/* {Object.keys(this.props.items[0]).map(
+                                prop => <th>{prop.toUpperCase()}</th>
+                            )} */}
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>PRICE</th>
+                            <th>QUANTITY</th>
+                            <th>SUBTOTAL</th>
+                        </tr>
+                        {rows}
+                    </tbody>
                 </table>
-                <div className="centered-label"><i>{empty ? "No items have been added yet. Start billing by adding a new item." : ""}</i></div>
+                {
+                    empty 
+                    ? <div className="centered-label"><i>No items have been added yet. Start billing by adding a new item.</i></div> 
+                    : <></>
+                }
             </div>
         ) 
     }
