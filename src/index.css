@@ -131,7 +131,8 @@ body {
 .centered-label {
   display: flex;
   justify-content: center;
-  margin: 2%;
+  margin: 1%;
+  text-align: center;
 }
 
 /* 

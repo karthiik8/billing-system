@@ -9,10 +9,10 @@ class List extends React.Component {
             selectedItem: (props.items.length > 0) ? props.items[0] : '',
         }
 
-        this.handleClick = this.handleClick.bind(this)
+        this.handleSelected = this.handleSelected.bind(this)
     }
 
-    handleClick(e, item, i) {
+    handleSelected(e, item, i) {
         // console.log(this.props.setSelectedItem)
         this.props.setSelectedItem(item, i)
     }
@@ -28,7 +28,7 @@ class List extends React.Component {
 
             rows.push(
                 // TODO: Change key for tr since more than one item can contain the same ID
-                <tr className="list-table-row" onClick={(e) => this.handleClick(e, item, i)} key={item.id}>
+                <tr tabIndex="0" onClick={(e) => this.handleSelected(e, item, i)} key={item.id} onFocus={(e) => this.handleSelected(e, item, i)}>
                     {Object.keys(item).map( 
                         prop => <td key={prop}>{item[prop]}</td>
                     )}
