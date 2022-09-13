@@ -14,52 +14,19 @@
 
 body {
   font: 14px "Trebuchet MS", Futura, sans-serif;
-
-  /* Body should not be given 100% width or 100% height as it overlaps the scroll bars! */
-  /* width: 100%;
-  height: 100%; */
 }
 
-/* TODO: Refactor into its own file */
-.list-table {
-  border-collapse: separate;
-  border-spacing: 0 .75em;  /* em = 2in of font size */
+.full-width {
   width: 100%;
-  text-align: left;
 }
 
-/* Applying CSS to th of only those tables whose class name is list-table */
-.list-table th {
-  border-style: solid;
-  border-width: 0px 0px 2px 0px;
-  border-color: rgb(150, 150, 150);
-
-  padding-bottom: .5em;
-  font-size: large;
+.full-height {
+  height: 100%;
 }
 
-/* Select all rows from the table, exclude last row and select even rows only */
-.list-table tbody > :not(tr.last-row):not(:first-child):nth-child(odd) {
-  background-color: rgb(230, 230, 230);
-}
-
-/* Applies the CSS to only those rows and its descendants when the row's class name is list-table-last-row*/
-.list-table tr.last-row > * {
-  border-style: solid;
-  border-width: 2px 0px 2px 0px;
-  border-color: rgb(150, 150, 150);
-
-  padding: .5em 0 .5em 0;
-  font-size: large;
-}
-
-/* Selecting list-table, then all rows, and then focusing the selection on only those td tags whose class name is amount-column*/
-/* .list-table tr td.amount-column {
-  text-align: right;
-} */
-
-.list-table tr :last-child {
-  text-align: right;
+.full-both {
+  width: 100%;
+  height: 100%;
 }
 
 .root-container {
@@ -95,7 +62,7 @@ body {
   */
 
   /* width: 100%; */
-  /* height: 100%; */
+  height: 100%;
 }
 
 .banner {
