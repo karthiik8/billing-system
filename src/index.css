@@ -51,18 +51,21 @@ body {
 .workspace-container {
   padding: 20px;
   
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  column-gap: 2%;
-
+  
   /*
   Adding padding and setting width at 100% simultaneously seems to cause the workspace div to overflow.
   This creates a visual bug with the banner where it does not extend across the entire scrollable width.
   In other words, a dead space can be seen to the right of the banner when scrolling right
   */
-
+  
   /* width: 100%; */
   height: 100%;
+}
+
+.workspace-grid {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  column-gap: 2%;
 }
 
 .banner {
@@ -92,7 +95,7 @@ body {
 }
 
 .workspace-container * {
-  padding: 5px;
+  padding: .3em;
 }
 
 .centered-label {
@@ -124,4 +127,8 @@ TODO: Refactor into its own file
   display: grid;
   grid-template-columns: 1fr 2fr;
   column-gap: 2%;
+}
+
+.details-container :is(b, input) {
+  text-align: right;
 }

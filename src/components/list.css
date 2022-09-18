@@ -13,10 +13,10 @@ table th.name {
   width: 40%;
 }
 
-table 
+table :is(
 th.price,
 th.qty,
-th.subtotal {
+th.subtotal) {
   width: 10%;   
 }
 
@@ -72,12 +72,12 @@ table th:last-child {
   text-align: right;
 }
 
-table tbody 
+table tbody :is(
 tr:not(:last-child):hover,
 tr:not(:last-child):active,
-tr.selected {
+tr.selected) {
   border-style: solid;
-  border-width: 0 .15em 0 .15em;
+  border-width: 0 .1em 0 .1em;
 }
 
 table tbody tr:not(:last-child):hover {

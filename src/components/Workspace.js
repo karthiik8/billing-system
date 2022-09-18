@@ -3,6 +3,7 @@ import React from "react";
 import NewItem from "./NewItem"
 import List from "./List"
 import Details from "./Details"
+import Summary from "./Summary"
 
 class Workspace extends React.Component {
     constructor(props) {
@@ -10,6 +11,9 @@ class Workspace extends React.Component {
 
         this.state = {
             items: [],
+            total: 0,
+            tax: 0,
+            discount: 0,
             selectedItem: null,
             selectedIndex: null,
         }
@@ -22,13 +26,15 @@ class Workspace extends React.Component {
         this.addItem = this.addItem.bind(this)
         this.setSelectedItem = this.setSelectedItem.bind(this)
         this.updateSelectedItem = this.updateSelectedItem.bind(this)
+        this.updateTotals = this.updateTotals.bind(this)
     }
 
     addItem(item) {
+        // Update item in list
+        this.setSelectedItem(item)
         this.setState(prevState => ({
             items: [...prevState.items, item]
-        }))
-        this.setSelectedItem(item)
+        }), this.updateTotals)
     }
 
     setSelectedItem(item, i) {
@@ -42,23 +48,32 @@ class Workspace extends React.Component {
     updateSelectedItem(newItem) {
         let newItemsList = this.state.items
         newItemsList[this.state.selectedIndex] = newItem
-        this.setState({
-            items: newItemsList
-        })
+        this.setState({items: newItemsList}, this.updateTotals)
+    }
+
+    updateTotals() {
+        let total = 0
+        this.state.items.map(
+            item => total += item.price * item.qty
+        )
+        this.setState({total: total})
     }
 
     render() {
         return (
-            <div className="workspace-container">
-                <div>
-                    <fieldset className="rounded-border">
-                        <legend><h1>INVOICE</h1></legend>
-                        <NewItem addItem={this.addItem} />
-                        <List items={this.state.items} setSelectedItem={this.setSelectedItem} />
-                    </fieldset>
-                </div>
-                <div>
-                    <Details item={this.state.selectedItem} updateSelectedItem={this.updateSelectedItem} />
+            <div>
+                <div className="workspace-container workspace-grid">
+                    <div>
+                        <fieldset className="rounded-border">
+                            <legend><h1>INVOICE</h1></legend>
+                            <NewItem addItem={this.addItem} />
+                            <List items={this.state.items} setSelectedItem={this.setSelectedItem} />
+                        </fieldset>
+                    </div>
+                    <div>
+                        <Summary total={this.state.total} tax={0} discount={0} />
+                        <Details item={this.state.selectedItem} updateSelectedItem={this.updateSelectedItem} />
+                    </div>
                 </div>
             </div>
         )
