@@ -1,9 +1,24 @@
 import React from "react";
 
 class Summary extends React.Component {
+    constructor(props) {
+        super(props)
+        
+        this.state = {
+            amountPaid: 0,
+        }
+
+        this.handleAmountInput = this.handleAmountInput.bind(this)
+    }
+
+    handleAmountInput(e) {
+        this.setState({amountPaid: e.target.value})
+    }
+
     render() {
         const { total, tax, discount } = this.props
         const balance = total - tax - discount
+        const change = this.state.amountPaid - total
 
         return (
             <fieldset className="rounded-border">
@@ -27,15 +42,21 @@ class Summary extends React.Component {
                     </li>
                     <li>
                         <label>Amount Paid</label>
-                        <input />
+                        <input value={this.state.amountPaid} onChange={this.handleAmountInput} />
                     </li>
                     <li>
                         <label>Return Change</label>
-                        <b>0</b>
+                        <b>
+                            {
+                                change < 0
+                                ? "Amound paid is insufficient!"
+                                : change
+                            }
+                        </b>
                     </li>
                 </ul>
                 <div className="centered-label">
-                    <button>CHECKOUT</button>
+                    <button disabled={change < 0}>CHECKOUT</button>
                 </div>
             </fieldset>
         )

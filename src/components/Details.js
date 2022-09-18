@@ -31,11 +31,8 @@ class Details extends React.Component {
                             prop => (
                                 <li key={prop}>
                                     <label>{prop.toUpperCase()}</label>
-                                    {   
-                                        // Check if field is editable
-                                        (this.nonEditableFields.has(prop)) 
-                                        ? <input value={item[prop]} disabled />
-                                        : <input defaultValue={item[prop]} onChange={(e) => this.handleEdit(e, prop)} key={item.id} />
+                                    <input defaultValue={item[prop]} onChange={(e) => this.handleEdit(e, prop)} key={item.id} disabled={this.nonEditableFields.has(prop)} />
+                                    {
                                         // Changing the key to the current item's ID will cause the default value to re-render.
                                         // If we do not do this, the input element will not refresh and old data will persist.
                                     }
