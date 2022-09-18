@@ -32,9 +32,13 @@ class Workspace extends React.Component {
     addItem(item) {
         // Update item in list
         this.setSelectedItem(item)
-        this.setState(prevState => ({
-            items: [...prevState.items, item]
-        }), this.updateTotals)
+        this.setState(prevState => ({items: [...prevState.items, item]}), 
+            () => {
+                // Calling multiple functions in a single callback
+                this.updateTotals()
+                this.setSelectedItem(item, this.state.items.length - 1)
+            }
+        )
     }
 
     setSelectedItem(item, i) {
@@ -67,7 +71,7 @@ class Workspace extends React.Component {
                         <fieldset className="rounded-border">
                             <legend><h1>INVOICE</h1></legend>
                             <NewItem addItem={this.addItem} />
-                            <List items={this.state.items} setSelectedItem={this.setSelectedItem} />
+                            <List items={this.state.items} selectedIndex={this.state.selectedIndex} setSelectedItem={this.setSelectedItem} />
                         </fieldset>
                     </div>
                     <div>

@@ -3,8 +3,6 @@ import React from "react";
 import "./list.css"
 
 class List extends React.Component {
-    selectedIndex = null;
-
     constructor(props) {
         super(props)
 
@@ -17,8 +15,7 @@ class List extends React.Component {
     }
 
     handleSelected(e, item, i) {
-        this.selectedIndex = i;
-        this.props.setSelectedItem(item, this.selectedIndex)
+        this.props.setSelectedItem(item, i)
     }
 
     render () {
@@ -32,7 +29,7 @@ class List extends React.Component {
 
             rows.push(
                 // TODO: Change key for tr since more than one item can contain the same ID
-                <tr className={this.selectedIndex === i ? "selected" : ""} onClick={(e) => this.handleSelected(e, item, i)} key={item.id}>
+                <tr className={this.props.selectedIndex === i ? "selected" : ""} onClick={(e) => this.handleSelected(e, item, i)} key={item.id}>
                     {Object.keys(item).map( 
                         prop => <td key={prop}>{item[prop]}</td>
                     )}
